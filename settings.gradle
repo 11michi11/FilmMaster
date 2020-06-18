@@ -1,7 +1,8 @@
 rootProject.name = 'film-master'
 
 include 'ApiGateway'
-include 'RecomendationService'
+include 'RecommendationService'
 include 'ListsService'
 include 'UserService'
 include 'SearchService'
+include 'discovery'
