@@ -6,9 +6,23 @@ spring:
       host: localhost
       port: 27017
       database: testdb
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: user-service-route
+          uri: lb://user-service
+          predicates:
+            - Path=/user-service/**
+        - id: search-service-route
+          uri: lb://search-service
+          predicates:
+            - Path=/search-service/**
 server:
-  port: 8085
+  port: 8080
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://discovery:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/

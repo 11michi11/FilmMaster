@@ -7,4 +7,6 @@ spring:
       port: 27017
       database: testdb
 server:
-  port: 8082
+  port: 0
+  servlet:
+    context-path: /search-service
