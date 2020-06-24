@@ -11,4 +11,6 @@ build
 *.ipr
 out/
 
+*.tsv
 
+/imdb/
