@@ -24,11 +24,25 @@ spring:
             - Path=/search-service/**
           filters:
             - DedupeResponseHeader=Access-Control-Allow-Origin
+        - id: lists-service-route
+          uri: lb://lists-service
+          predicates:
+            - Path=/lists-service/**
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Origin
+        - id: lists-service-route
+          uri: lb://recommendation-service
+          predicates:
+            - Path=/recommendation-service/**
+          filters:
+            - DedupeResponseHeader=Access-Control-Allow-Origin
 server:
   port: 8080
 eureka:
   client:
     serviceUrl:
+      #      use this URL when running in docker
+      #      defaultZone: http://discovery:8761/eureka/
       defaultZone: http://localhost:8761/eureka/
     eureka-service-url-poll-interval-seconds: 10
     filter-only-up-instances: true
