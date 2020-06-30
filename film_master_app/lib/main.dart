@@ -6,6 +6,7 @@ import 'authentication/authentication_state.dart';
 import 'common/common.dart';
 import 'home/home.dart';
 import 'login/login.dart';
+import 'register/register_page.dart';
 import 'splash/splash.dart';
 
 void main() {
@@ -29,22 +30,15 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'FilmMaster',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-        builder: (context, state) {
-          if (state is AuthenticationInitial) {
-            return SplashPage();
-          } else if (state is AuthenticationSuccess) {
-            return HomePage();
-          } else if (state is AuthenticationFailure) {
-            return LoginPage(userRepository: userRepository);
-          } else {
-            return LoadingIndicator();
-          }
-        },
-      ),
+      routes: {
+        '/login': (context) => LoginPage(userRepository: userRepository),
+        '/register': (context) => RegisterPage(userRepository: userRepository),
+      },
+      initialRoute: '/login',
     );
   }
 }
+

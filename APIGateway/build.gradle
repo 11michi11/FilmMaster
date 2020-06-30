@@ -15,8 +15,16 @@ configurations {
 	}
 }
 
-jib.to.image = 'api-gateway:latest'
 
+jib.container.environment
+jib {
+	to {
+		image = 'api-gateway:latest'
+	}
+	container {
+		environment = [EUREKA_SERVER: 'discovery']
+	}
+}
 repositories {
 	mavenCentral()
 }
@@ -26,7 +34,6 @@ ext {
 }
 
 dependencies {
-//	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	compileOnly 'org.projectlombok:lombok'

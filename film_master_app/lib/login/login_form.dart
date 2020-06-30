@@ -1,3 +1,4 @@
+import 'package:film_master_app/register/bloc/register_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bloc/login_bloc.dart';
@@ -32,48 +33,56 @@ class _LoginFormState extends State<LoginForm> {
       },
       child: BlocBuilder<LoginBloc, LoginState>(builder: (context, state) {
         return Form(
-          child: Row(
-            children: [
-              Expanded(
-                flex: 4,
-                child: Container(),
+          child: Center(
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.25,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                        labelText: 'username',
+                        labelStyle: TextStyle(fontSize: 25)),
+                    controller: _usernameController,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        labelText: 'password',
+                        labelStyle: TextStyle(fontSize: 25)),
+                    controller: _passwordController,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(20),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      RaisedButton(
+                        onPressed: state is! LoginInProgress
+                            ? _onLoginButtonPressed
+                            : null,
+                        child: Text('Login', style: TextStyle(fontSize: 19)),
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.03,
+                      ),
+                      RaisedButton(
+                        onPressed: () =>
+                            Navigator.of(context).pushNamed('/register'),
+                        child: Text('Register', style: TextStyle(fontSize: 19)),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    child: state is LoginInProgress
+                        ? CircularProgressIndicator()
+                        : null,
+                  )
+                ],
               ),
-              Expanded(
-                flex: 3,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    TextFormField(
-                      decoration: InputDecoration(labelText: 'username'),
-                      controller: _usernameController,
-                    ),
-                    TextFormField(
-                      decoration: InputDecoration(labelText: 'password'),
-                      controller: _passwordController,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(20),
-                    ),
-                    RaisedButton(
-                      onPressed: state is! LoginInProgress
-                          ? _onLoginButtonPressed
-                          : null,
-                      child: Text('Login'),
-                    ),
-                    Container(
-                      child: state is LoginInProgress
-                          ? CircularProgressIndicator()
-                          : null,
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 4,
-                child: Container(),
-              ),
-            ],
+            ),
           ),
         );
       }),

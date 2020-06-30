@@ -1,5 +1,6 @@
 package com.filmmaster.userservice.model;
 
+import com.filmmaster.userservice.model.dto.UserInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -10,6 +11,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
 
     String email;
+    String name;
     String password;
+
+    public static User fromUserInfo(UserInfo userInfo) {
+        return new User(userInfo.getEmail(), userInfo.getName(), userInfo.getPassword());
+    }
 
 }

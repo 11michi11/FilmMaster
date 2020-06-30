@@ -4,13 +4,13 @@ import 'package:film_master_app/home/header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'bloc/login_bloc.dart';
-import 'login_form.dart';
+import 'bloc/register_bloc.dart';
+import 'register_form.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
   final UserRepository userRepository;
 
-  LoginPage({Key key, @required this.userRepository})
+  RegisterPage({Key key, @required this.userRepository})
       : assert(userRepository != null),
         super(key: key);
 
@@ -19,14 +19,12 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: BlocProvider(
         create: (context) {
-          return LoginBloc(
-              authenticationBloc: BlocProvider.of<AuthenticationBloc>(context),
-              userRepository: userRepository);
+          return RegisterBloc(userRepository: userRepository);
         },
         child: Column(
           children: [
             Header(),
-            LoginForm(),
+            RegisterForm(),
           ],
         ),
       ),

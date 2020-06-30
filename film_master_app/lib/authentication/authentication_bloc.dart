@@ -18,12 +18,12 @@ class AuthenticationBloc
   Stream<AuthenticationState> mapEventToState(
       AuthenticationEvent event) async* {
     if (event is AuthenticationStarted) {
-      final bool isLoggedIn = userRepository.isLoggedIn();
-
-      if (isLoggedIn)
-        yield AuthenticationSuccess();
-      else
-        yield AuthenticationFailure();
+//      final bool isLoggedIn = userRepository.isLoggedIn();
+//
+//      if (isLoggedIn)
+      yield AuthenticationSuccess();
+//      else
+//        yield AuthenticationFailure();
     }
 
     if (event is AuthenticationLoggedIn) {
@@ -33,7 +33,7 @@ class AuthenticationBloc
 
     if (event is AuthenticationLoggedOut) {
       yield AuthenticationInProgress();
-      await userRepository.logout();
+//      await userRepository.logout();
       yield AuthenticationFailure();
     }
   }

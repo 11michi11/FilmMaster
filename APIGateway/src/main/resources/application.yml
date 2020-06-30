@@ -41,8 +41,6 @@ server:
 eureka:
   client:
     serviceUrl:
-      #      use this URL when running in docker
-      #      defaultZone: http://discovery:8761/eureka/
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://${EUREKA_SERVER:localhost}:8761/eureka/
     eureka-service-url-poll-interval-seconds: 10
     filter-only-up-instances: true

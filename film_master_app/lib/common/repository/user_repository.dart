@@ -17,11 +17,7 @@ class UserRepository {
     return "Success";
   }
 
-  bool isLoggedIn() {
-    return this.client == null;
-  }
-
-  Future<void> logout() async {
-    this.client = null;
+  Future<void> register({String name, String email, String password}) async {
+    await this.client.register(UserInfo(name, email, password));
   }
 }

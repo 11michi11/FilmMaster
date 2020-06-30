@@ -19,7 +19,7 @@ public class Runner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         User user = userRepository.findByEmail("user@mail.com").orElseGet(() -> {
-            var newUser = new User("user@mail.com", "$2a$10$jISxsn9IeIhHvRlIb9LP7OQqV5Q0YCgB6Z34aesXjb.AAm.B89n7S");
+            var newUser = new User("user@mail.com", "John", "$2a$10$jISxsn9IeIhHvRlIb9LP7OQqV5Q0YCgB6Z34aesXjb.AAm.B89n7S");
             userRepository.save(newUser);
             return newUser;
         });
