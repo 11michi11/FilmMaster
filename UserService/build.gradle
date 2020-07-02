@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.2.6.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'com.google.cloud.tools.jib' version '1.8.0'
 	id 'java'
 }
 
@@ -11,6 +12,16 @@ sourceCompatibility = '11'
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
+	}
+}
+
+jib {
+	to {
+		image = 'user-service:latest'
+	}
+	container {
+		environment = [EUREKA_SERVER: 'discovery']
+		mainClass = 'com.filmmaster.userservice.UserServiceApplication'
 	}
 }
 

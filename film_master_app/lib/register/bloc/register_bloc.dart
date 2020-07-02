@@ -18,7 +18,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   Stream<RegisterState> mapEventToState(RegisterEvent event) async* {
     if (event is RegisterButtonPressed) {
       yield RegisterInProgress();
-
+      print(event.toString());
       try {
         await userRepository.register(
           name: event.name,

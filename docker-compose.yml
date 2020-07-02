@@ -10,3 +10,7 @@ services:
       - 8080:8080
     depends_on:
       - discovery
+  user-service:
+    image: user-service:latest
+    ports:
+      - 8090:8090

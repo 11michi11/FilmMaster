@@ -7,7 +7,7 @@ class RestClient {
   final clientSecret = "secret";
   static final baseUrl = "http://localhost:8080";
   final authUrl = Uri.parse("$baseUrl/user-service/oauth/token");
-  final registerUrl = Uri.parse("$baseUrl/user-service/register");
+  final registerUrl = Uri.parse("$baseUrl/user-service/user/register");
   var client;
 
   Future<void> login(String username, String password) async {
@@ -29,7 +29,7 @@ class UserInfo {
   String email;
   String password;
 
-  UserInfo(String name, String email, String password);
+  UserInfo(this.name, this.email, this.password);
 
   Map toJson() => {
         'name': name,

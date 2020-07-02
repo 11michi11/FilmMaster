@@ -16,7 +16,6 @@ configurations {
 }
 
 
-jib.container.environment
 jib {
 	to {
 		image = 'api-gateway:latest'

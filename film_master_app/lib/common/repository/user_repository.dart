@@ -18,6 +18,8 @@ class UserRepository {
   }
 
   Future<void> register({String name, String email, String password}) async {
-    await this.client.register(UserInfo(name, email, password));
+    var user = UserInfo(name, email, password);
+    print(user.toJson().toString());
+    await this.client.register(user);
   }
 }
