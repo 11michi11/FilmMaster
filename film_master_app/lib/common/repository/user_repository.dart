@@ -1,3 +1,4 @@
+import 'package:film_master_app/common/service/dto/user_info.dart';
 import 'package:meta/meta.dart';
 
 import '../common.dart';

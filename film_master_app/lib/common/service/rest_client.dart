@@ -2,6 +2,8 @@ import 'package:oauth2/oauth2.dart' as oauth2;
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
+import 'dto/user_info.dart';
+
 class RestClient {
   final clientId = "my-trusted-client";
   final clientSecret = "secret";
@@ -22,18 +24,4 @@ class RestClient {
         body: convert.jsonEncode(userInfo));
     print(response.body);
   }
-}
-
-class UserInfo {
-  String name;
-  String email;
-  String password;
-
-  UserInfo(this.name, this.email, this.password);
-
-  Map toJson() => {
-        'name': name,
-        'email': email,
-        'password': password,
-      };
 }
