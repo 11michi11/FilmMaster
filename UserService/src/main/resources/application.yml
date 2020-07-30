@@ -3,8 +3,8 @@ spring:
     name: user-service
   data:
     mongodb:
-      //
-      host: 192.168.65.2
+#     change to your computer ip
+      host: 10.10.11.252
       port: 27017
       database: filmMaster
 server:
@@ -15,3 +15,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://${EUREKA_SERVER:localhost}:8761/eureka/
+swagger:
+  config:
+    refreshrate: 10000

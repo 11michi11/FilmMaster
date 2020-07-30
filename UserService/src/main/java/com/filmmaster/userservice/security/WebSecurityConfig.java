@@ -40,7 +40,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web
                 .ignoring()
-                .antMatchers("/user/register");
+                .antMatchers("/user/register",
+                        "/",
+                        "/swagger-ui.html",
+                        "/v2/api-docs",
+                        "/v2/websockets.json",
+                        "/configuration/ui",
+                        "/swagger-resources/**",
+                        "/configuration/security",
+                        "/swagger-ui.html",
+                        "/v2/websockets.json",
+                        "/service/**",
+                        "/csrf",
+                        "/webjars/**");
+
     }
 
     @Override
